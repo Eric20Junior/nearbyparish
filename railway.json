@@ -1,0 +1,24 @@
+{
+  "version": 2,
+  "services": [
+    {
+      "name": "nearbyparish",
+      "buildCommand": "pip install -r requirements.txt",
+      "command": "python manage.py runserver 0.0.0.0:$PORT",
+      "env": {
+        "DJANGO_SETTINGS_MODULE": "nearbyparish.settings",
+        "DATABASE_URL": "$DATABASE_URL"
+      },
+      "routes": [
+        {
+          "src": "/api/(.*)",
+          "dest": "django:$1"
+        },
+        {
+          "src": "/(.*)",
+          "dest": "django/"
+        }
+      ]
+    }
+  ]
+}
