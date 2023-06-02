@@ -1,0 +1,5 @@
+export { Homepage } from './Homepage'
+export { Dashboard } from './Dashboard'
+export { CreateProfile } from './CreateProfile'
+export { Login } from './Login'
+export { Register } from './Register'
