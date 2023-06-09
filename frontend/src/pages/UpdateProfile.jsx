@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import axiosinstance from '../utilis/axiosinstance'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
-
-
-export const CreateProfile = () => {
-
-  const [churchname, setChurchname] = useState('')
+export const UpdateProfile = () => {
+    const [churchname, setChurchname] = useState('')
   const [phonenumber, setPhonenumber] = useState('')
   const [address, setAddress] = useState('')
   const [description, setDescription] = useState('')
@@ -17,14 +14,49 @@ export const CreateProfile = () => {
 
   const navigate = useNavigate()
 
-    const accessToken = localStorage.getItem('accessToken')
-    console.log(accessToken)
-  
-  // Function to handle form submission
-      const handleSubmit = (event) => {
-        event.preventDefault();
-    
-        const profileData = {
+  //get profile id
+  const params = useParams()
+  const id = params.id
+
+
+    useEffect(() => {
+      //fetch the profile data based on the id
+      const getProfile = async () => {
+        try {
+          const accessToken = localStorage.getItem('accessToken')
+
+          const response = await axiosinstance.get(`/api/details/${id}/`, {
+            headers: {
+              Authorization: `Bearer ${accessToken}`
+            }
+          })
+
+          const profileData = response.data
+          console.log(profileData)
+
+          //set state with the fetch data
+          setChurchname(profileData.church_name);
+          setPhonenumber(profileData.phone_number);
+          setAddress(profileData.address);
+          setDescription(profileData.description);
+          setParish(profileData.parish);
+          setWebsite(profileData.website);
+          setParishpriest(profileData.parish_priest);
+          setEstablisheddate(profileData.established_date);
+        } catch (error) {
+          console.log('Error fetching profile', error.response);
+        }
+      }
+
+      getProfile()
+    }, [])
+
+    const updateProfile = (e) => {
+      try {
+        e.preventDefault();
+        const accessToken = localStorage.getItem('accessToken')
+
+        const updateProfileData = {
           church_name: churchname,
           phone_number: phonenumber,
           address,
@@ -33,25 +65,21 @@ export const CreateProfile = () => {
           website,
           parish_priest: parishpriest,
           established_date: establisheddate,
-        };
-    
-        axiosinstance
-          .post('/api/create/', profileData, {
-            headers: {
-              Authorization: `Bearer ${accessToken}`,
-            },
-          })
-          .then((response) => {
-            // Handle the successful response
-            console.log('Profile created successfully');
-            navigate('/dashboard'); // Redirect to the dashboard or desired page
-          })
-          .catch((error) => {
-            // Handle the error
-            console.error('Error creating profile:', error);
-          });
-      };
-    
+        }
+
+        axiosinstance.put(`/api/update/${id}/`, updateProfileData, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`
+          }
+        })
+        console.log('Profile updated sucessfully')
+        navigate('/dashboard')
+      } catch (error) {
+        console.log('Error udating profile', error.response)
+      }
+    }
+
+
   return (
     <>
         <div className='shadow-lg lg:h-[560px] lg:w-[600px] sm:w-[800px] mx-auto'>
@@ -59,11 +87,11 @@ export const CreateProfile = () => {
 
             <div className='p-4'>
 
-                <h1 className='font-bold w-60 lg:text-right'>Create Profile</h1>
+                <h1 className='font-bold w-60 lg:text-right'>Update Profile</h1>
 
             </div>
 
-                <form onSubmit={handleSubmit} className='space-y-3'>
+                <form onSubmit={updateProfile} className='space-y-3'>
                     <div>
                         <input type="text" 
                         name="churchname" 
@@ -137,7 +165,7 @@ export const CreateProfile = () => {
                     </div>
 
                     <div className='w-[300px] h-[35px] rounded bg-[#2F80ED] mt-8 text-white mx-auto py-1.5 text-sm font-bold'>
-                        <button type="submit">Create Profile</button>
+                        <button type="submit">Update Profile</button>
                     </div>
                     
                 </form>
