@@ -54,6 +54,7 @@ REST_FRAMEWORK = {
     ]
 }
 
+
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=5),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=30),
@@ -182,3 +183,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 CORS_ALLOW_ALL_ORIGINS = True
+
+# Email configuration
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'eric20junior@gmail.com'
+EMAIL_HOST_PASSWORD = 'dynamic1997'
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER

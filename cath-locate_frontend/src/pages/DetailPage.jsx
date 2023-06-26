@@ -42,7 +42,7 @@ export const DetailPage = () => {
         <p className='text-xs font-light'>Basic info, like church name, address.</p>
       </div>
 
-      <div className='sm:border sm:rounded-[12px] md:w-[800px] sm:mx-auto'>
+      <div className='sm:border sm:border-black sm:rounded-[12px] md:w-[800px] sm:mx-auto'>
         <div className='flex justify-between px-5 sm:m-6'>
           <div>
             <h1 className='font-normal text-[24px]'>Church</h1>
@@ -50,57 +50,57 @@ export const DetailPage = () => {
           </div>
 
               {/* this checks if a user is the creator of a profile */}
-              {user?.user_id === detailpage?.id && (
+              {/* {user?.user_id === detailpage?.id && (
                 <>
                   <Link to={`/update/${id}`} className='border border-black rounded w-20 h-8 mt-4 text-center'>Edit</Link>
     
                   <Link to={`/delete/${id}`} className='border border-black rounded w-20 h-8 mt-4 text-center'>Delete</Link>
                 </>
-              )}
+              )} */}
 
         </div>
 
         <div className='mt-14 space-y-9'>
-          <div className='flex justify-between px-5 border-b-2 sm:border'> 
+          <div className='flex justify-between px-5 border-b-black sm:border'> 
           </div>
 
-          <div className='flex justify-between px-5 border-b-2 pb-8'>
-            <p className='text-[#BDBDBD] text-xs'>CHURCH NAME</p>
+          <div className='flex justify-between px-5 border-b-black border-b pb-8'>
+            <p className=' text-xs'>CHURCH NAME</p>
             <p className='text-xs'>{detailpage.church_name}</p>
           </div>
 
-          <div className='flex justify-between px-5 border-b-2 pb-8'>
-            <p className='text-[#BDBDBD] text-xs'>ADDRESS</p>
+          <div className='flex justify-between px-5 border-b-black border-b  pb-8'>
+            <p className=' text-xs'>ADDRESS</p>
             <p className='text-xs'>{detailpage.address}</p>
           </div>
 
-          <div className='flex justify-between px-5 border-b-2 pb-8'>
-            <p className='text-[#BDBDBD] text-xs'>PHONE NUMBER</p>
+          <div className='flex justify-between px-5 border-b-black border-b  pb-8'>
+            <p className=' text-xs'>PHONE NUMBER</p>
             <p className='text-xs'>{detailpage.phone_number}</p>
           </div>
 
-          <div className='flex justify-between space-x-6 px-5 border-b-2 pb-8'>
-            <p className='text-[#BDBDBD] text-xs'>DESCRIPTION</p>
+          <div className='flex justify-between space-x-6 px-5 border-b-black border-b pb-8'>
+            <p className=' text-xs'>DESCRIPTION</p>
             <p className='text-xs'>{detailpage.description}</p>
           </div>
 
-          <div className='flex justify-between px-5 border-b-2 pb-8'>
-            <p className='text-[#BDBDBD] text-xs'>PARISH</p>
+          <div className='flex justify-between px-5 border-b-black border-b  pb-8'>
+            <p className=' text-xs'>PARISH</p>
             <p className='text-xs'>{detailpage.parish}</p>
           </div>
 
-          <div className='flex justify-between space-x-4 px-5 border-b-2 pb-8'>
-            <p className='text-[#BDBDBD] text-xs'>WEBSITE</p>
+          <div className='flex justify-between space-x-4 px-5 border-b-black border-b  pb-8'>
+            <p className=' text-xs'>WEBSITE</p>
             <p className='text-xs'>{detailpage.website}</p>
           </div>
 
-          <div className='flex justify-between px-5 border-b-2 pb-8'>
-            <p className='text-[#BDBDBD] text-xs'>PARISH PRIEST</p>
+          <div className='flex justify-between px-5 border-b-black border-b  pb-8'>
+            <p className=' text-xs'>PARISH PRIEST</p>
             <p className='text-xs'>{detailpage.parish_priest}</p>
           </div>
 
-          <div className='flex justify-between px-5 border-b-2 pb-8'>
-            <p className='text-[#BDBDBD] text-xs'>ESTABLISHTED DATE</p>
+          <div className='flex justify-between px-5 border-b-black border-b  pb-8'>
+            <p className=' text-xs'>ESTABLISHTED DATE</p>
             <p className='text-xs'>{detailpage.established_date}</p>
           </div>
 

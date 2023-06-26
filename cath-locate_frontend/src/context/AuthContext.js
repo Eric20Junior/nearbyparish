@@ -10,6 +10,27 @@ export const AuthProvider = ({ children }) => {
     const navigate = useNavigate()
 
 
+    const adminLogin = async (username, password) => {
+      try {
+        const response = await axiosinstance.post('/account/login/', {
+          username,
+          password,
+        })
+
+        const { access, refresh, user } = response.data
+        console.log(user)
+
+        //save the token to local storage
+        localStorage.setItem('accessToken', access)
+        localStorage.setItem('refreshToken', refresh)
+
+        return user || false;
+      } catch (error) {
+        console.log('Error you are not allowed here', error)
+      }
+    }
+
+
     const loginUser = async (username, password) => {
       try {
         const response = await axiosinstance.post('/account/api/token/', {
@@ -94,10 +115,19 @@ export const AuthProvider = ({ children }) => {
     navigate('login')
   }
 
+  const logoutAdmin = () => {
+    setUser(null)
+    localStorage.removeItem('accessToken')
+    navigate('/admin/login')
+  }
+
+
     const contextData = {
         user:user,
         loginUser:loginUser,
+        adminLogin:adminLogin,
         logoutUser:logoutUser,
+        logoutAdmin:logoutAdmin,
     }
 
     return (

@@ -1,8 +1,0 @@
-export { Homepage } from './Homepage'
-export { Dashboard } from './Dashboard'
-export { CreateProfile } from './CreateProfile'
-export { UpdateProfile } from './UpdateProfile'
-export { DeletePage } from './DeletePage'
-export { DetailPage } from './DetailPage'
-export { Login } from './Login'
-export { Register } from './Register'

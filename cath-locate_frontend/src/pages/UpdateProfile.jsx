@@ -49,7 +49,7 @@ export const UpdateProfile = () => {
       }
 
       getProfile()
-    }, [])
+    }, [id])
 
     const updateProfile = (e) => {
       try {

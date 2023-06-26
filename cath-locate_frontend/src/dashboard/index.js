@@ -1,0 +1,12 @@
+export { AdminDashboard } from './AdminDashboard/AdminDashboard'
+export { AdminLogin } from './AdminDashboard/AdminLogin'
+export { Layout } from './AdminDashboard/shared/Layout'
+export { UserDashboard } from './UserDashboard/UserDashboard'
+export { UserLayout } from './UserDashboard/shared/UserLayout'
+
+export { Users } from './AdminDashboard/Users/Users'
+export { DeleteUser } from './AdminDashboard/Users/DeleteUser'
+export { Faq } from './AdminDashboard/FAQ/Faq'
+export { CreateFaq } from './AdminDashboard/FAQ/CreateFaq'
+export { UpdateFaq } from './AdminDashboard/FAQ/UpdateFaq'
+export { DeleteFaq } from './AdminDashboard/FAQ/DeleteFaq'
